@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Layout.astro
-title: Research Project Page Template
-description: Simple project page template for your research paper, built with Astro and Tailwind CSS
+title: VideoPath-LLaVA: Pathology Diagnostic Reasoning Through Video Instruction Tuning
+description: Webpage for VideoPath-LLaVA
 favicon: favicon.svg
 thumbnail: screenshot-light.png
 ---
@@ -33,27 +33,17 @@ export const components = {pre: CodeBlock, table: Table}
   title={frontmatter.title}
   authors={[
     {
-      name: "Roman Hauksson",
-      url: "https://roman.technology",
-      institution: "Independent",
-      notes: ["*", "†"],
+      name: "Trinh Vuong",
+      url: "https://www.linkedin.com/in/trinh-vuong-218812193/",
+      institution: "Korea University",
     },
     {
-      name: "Author Two",
+      name: "Jin Tae Kwak",
+      url: "https://www.kwaklab.net/PI.html",
       institution: "Institution Two",
-      notes: ["*", "†"],
-    },
-    {
-      name: "Author Three",
-      institution: "Institution Three",
-      notes: ["†"],
-    },
-    {
-      name: "Author Four",
-      institution: "Institution Four",
     },
   ]}
-  conference="Conference Name"
+  conference="Arxiv"
   notes={[
     {
       symbol: "*",
@@ -65,46 +55,45 @@ export const components = {pre: CodeBlock, table: Table}
     },
   ]}
   links={[
-    {
-      name: "Paper",
-      url: "",
-      icon: "ri:file-pdf-2-line",
-    },
+    //{
+      //name: "Paper",
+      //url: "",
+      //icon: "ri:file-pdf-2-line",
+   // },
     {
       name: "Code",
-      url: "https://github.com/RomanHauksson/academic-project-astro-template",
+      url: "https://github.com/trinhvg/VideoPath-LLaVA",
       icon: "ri:github-line",
     },
     {
       name: "arXiv",
-      url: "",
+      url: "https://arxiv.org/abs/2505.04192",
       icon: "academicons:arxiv",
     },
     {
-      name: "Bluesky",
+      name: "Benchmark (Coming Soon)",
       url: "",
-      icon: "ri:bluesky-line"
+      icon: "mdi:database"
     }
   ]}
   />
 
-<Video source={outside} />
+// <Video source={outside} />
 
 <HighlightedSection>
 
 ## Abstract
 
-This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+// This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
 
 </HighlightedSection>
 
-## Figures
+## Model
 
-Use the figure component to display images, videos, equations, or any other element, with an optional caption.
-
+VideoPath-LLaVa model
 <Figure>
-  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
+  <Image slot="figure" source={Network} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Overview of the VideoPath-LLaVA model architecture and its freezing and tuning strategy at each stage. The model comprises three main components: a vision encoder (ViT), a projector, and a large language decoder (LLM)..</span>
 </Figure>
 
 ## Image comparison slider
@@ -162,10 +151,13 @@ You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.g
 ## BibTeX citation
 
 ```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
+@misc{vuong2025videopathllavapathologydiagnosticreasoning,
+      title={VideoPath-LLaVA: Pathology Diagnostic Reasoning Through Video Instruction Tuning},
+      author={Trinh T. L. Vuong and Jin Tae Kwak},
+      year={2025},
+      eprint={2505.04192},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.04192},
 }
 ```
