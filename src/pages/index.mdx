@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: VideoPath-LLaVA: Pathology Diagnostic Reasoning Through Video Instruction Tuning
+title: "VideoPath-LLaVA: Pathology Diagnostic Reasoning Through Video Instruction Tuning"
 description: Webpage for VideoPath-LLaVA
 favicon: favicon.svg
 thumbnail: screenshot-light.png
@@ -29,6 +29,14 @@ import CodeBlock from "../components/CodeBlock.astro";
 import Table from "../components/Table.astro";
 export const components = {pre: CodeBlock, table: Table}
 
+{/* Image imports */}
+import fig_network from "../assets/Network.png";
+import fig_table from "../assets/result.png";
+import fig_example from "../assets/Example_results.png";
+import example from "../assets/Example.png";
+import fig_data from "../assets/Data.png";
+
+
 <Header
   title={frontmatter.title}
   authors={[
@@ -40,26 +48,16 @@ export const components = {pre: CodeBlock, table: Table}
     {
       name: "Jin Tae Kwak",
       url: "https://www.kwaklab.net/PI.html",
-      institution: "Institution Two",
+      institution: "Korea University",
     },
   ]}
-  conference="Arxiv"
+  conference="Arxiv 2025"
   notes={[
     {
-      symbol: "*",
-      text: "author note one",
-    },
-    {
-      symbol: "†",
-      text: "author note two",
-    },
+      text: "{trinhvg,jkwak}@korea.ac.kr",
+    }
   ]}
   links={[
-    //{
-      //name: "Paper",
-      //url: "",
-      //icon: "ri:file-pdf-2-line",
-   // },
     {
       name: "Code",
       url: "https://github.com/trinhvg/VideoPath-LLaVA",
@@ -73,80 +71,55 @@ export const components = {pre: CodeBlock, table: Table}
     {
       name: "Benchmark (Coming Soon)",
       url: "",
-      icon: "mdi:database"
     }
   ]}
   />
 
-// <Video source={outside} />
 
-<HighlightedSection>
+
 
 ## Abstract
-
-// This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
-
+<HighlightedSection>
+We present VideoPath-LLaVA, the first large multimodal model (LMM) in computational pathology that integrates three distinct image scenarios, single patch images, automatically keyframe-extracted clips, and manually segmented video pathology images, to mimic the natural diagnostic process of pathologists. By generating detailed histological descriptions and culminating in a definitive sign-out diagnosis, VideoPath-LLaVA bridges visual narratives with diagnostic reasoning.
+Central to our approach is the VideoPath-Instruct dataset, comprising 4278 video and diagnosis-specific chain-of-thought instructional pairs sourced from educational histopathology videos on YouTube.
+Although high-quality data is critical for enhancing diagnostic reasoning, its creation is time-intensive and limited in volume. To overcome this challenge, we transfer knowledge from existing single-image instruction datasets to train on weakly annotated, keyframe-extracted clips, followed by fine-tuning on manually segmented videos. VideoPath-LLaVA establishes a new benchmark in pathology video analysis and offers a promising foundation for future AI systems that support clinical decision-making through integrated visual and diagnostic reasoning.
 </HighlightedSection>
+
 
 ## Model
 
 VideoPath-LLaVa model
 <Figure>
-  <Image slot="figure" source={Network} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Overview of the VideoPath-LLaVA model architecture and its freezing and tuning strategy at each stage. The model comprises three main components: a vision encoder (ViT), a projector, and a large language decoder (LLM)..</span>
+  <Image slot="figure" source={fig_network} altText="Diagram of the transformer deep learning architecture."  />
+  <span slot="caption">Overview of the VideoPath-LLaVA model architecture and its freezing and tuning strategy at each stage. The model comprises three main components: a vision encoder (ViT), a projector, and a large language decoder (LLM).</span>
 </Figure>
 
-## Image comparison slider
 
-An interactive, accessible slider component with keyboard navigation.
+## Data Preparation
+
 <Figure>
-  <ImageComparison slot="figure" client:load imageUrlOne={dogsDiffc.src} imageUrlTwo={dogsTrue.src} altTextOne="Photo of two dogs running side-by-side in shallow water, lossily compressed using the DiffC algorithm" altTextTwo="Original photo of two dogs running side-by-side in shallow water" />
-  <span slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the <a href="https://jeremyiv.github.io/diffc-project-page/">DiffC algorithm</a>.</span>
+  <Image slot="figure" source={fig_data} altText="Data Preparation." />
+  <span slot="caption"> Data Preparation </span>
 </Figure>
 
-## Two columns
 
-Use the two columns component to display two columns of content. In this example, the first column contains a figure with a YouTube video and the second column contains a figure with a custom [React](https://react.dev/) component. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
+## Examples
 
-<TwoColumns>
-  <Figure slot="left">
-    <YouTubeVideo slot="figure" videoId="wjZofJX0v4M" />
-    <span slot="caption">Take a look at this YouTube video.</span>
-  </Figure>
-  <Figure slot="right">
-    <Splat slot="figure" client:idle />
-    <span slot="caption">Now look at this <a href="https://en.wikipedia.org/wiki/Gaussian_splatting">Gaussian splat</a>, rendered with a React component.</span>
-  </Figure>
-</TwoColumns>
+<Figure>
+  <Image slot="figure" source={fig_example} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Comparison of VideoPath-LLaVA and GPT-4o in the visual reasoning task for diagnosing high-grade serous carcinoma. While both models correctly identify serous carcinoma, GPT-4o fails to recognize key features such as nuclear atypia and desmoplastic stroma, which are critical for assessing tumor invasiveness, leading to a less
+precise grading of malignancy.</span>
+</Figure>
 
-## Heading levels
 
-Use headings to divide your content into sections.
 
-### Heading 3
+## Results
 
-Go down a level to heading 3...
+<Figure>
+  <Image slot="figure" source={fig_table} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Performance benchmarking of text generation models on VideoPath-Instruct.</span>
+</Figure>
 
-#### Heading 4
-
-...and down again to heading 4.
-
-## LaTeX
-
-You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
-
-<LaTeX formula="\int_a^b f(x) dx" />
-
-## Tables
-
-You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
-
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
 
 ## BibTeX citation
 
